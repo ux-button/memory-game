@@ -47,7 +47,7 @@ export function Game () {
 
   return (
     <>
-      <div className='navigation-bar'>
+      <div className='nav'>
         <NavigationBar score={score} />
       </div>
       <div className='card-board'>
