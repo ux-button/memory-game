@@ -35,10 +35,14 @@ const fetchExtra = async (extra, initial=0) => {
     // Combine in single object
     const extraPokemons = [];
     for (let i = initial; i < full; i++) {
-        extraPokemons.push({id: i, name: pokemonNames[i], url: imagesUrl[i]})
+        extraPokemons.push({id: i, name: capitalName(pokemonNames[i]), url: imagesUrl[i]})
     }
 
     return extraPokemons
+}
+
+const capitalName = (string) => {
+    return string[0].toUpperCase() + string.slice(1)
 }
 
 export { fetchExtra }

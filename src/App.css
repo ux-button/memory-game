@@ -29,7 +29,7 @@ body {
 }
 
 .card {
-    color: white;
+    color: grey;
     background-color: #333;
     border-radius: 16px;
     box-shadow: 1px 5px 17px -1px rgba(0,0,0,0.05);
@@ -38,12 +38,14 @@ body {
     flex-direction: column;
     align-items: center;
     will-change: transform;
-    transition: background-color 100ms ease-out, transform 100ms ease-out;
+    transition: background-color 100ms ease-out, transform 100ms ease-out, color 50ms ease-out;
+    font-size: small;
 }
 
 .card:hover {
+    color: white;
     background-color: #444;
-    transform: translateY(-4px);
+    transform: translateY(-2px);
     cursor: pointer;
 }
 

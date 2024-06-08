@@ -41,7 +41,11 @@ export function Game () {
 
   const cardsPile = pokemons.map(pokemon => {
       return (
-        <Card key={pokemon.id} id={pokemon.id} pokemonName={pokemon.name} imageUrl={pokemon.url} handleClick={checkMatch}/>
+        <Card key={pokemon.id}
+          id={pokemon.id}
+          pokemonName={pokemon.name}
+          imageUrl={pokemon.url}
+          handleClick={checkMatch}/>
       )
   })
 
@@ -51,7 +55,7 @@ export function Game () {
         <NavigationBar score={score} />
       </div>
       <div className='card-board'>
-        {cardsPile.slice(0, 15)}
+        {cardsPile.slice(0, 12)}
       </div>
     </>
   )
