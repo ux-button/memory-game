@@ -21,6 +21,13 @@ body {
     color: white;
 }
 
+.loading-container {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .card-board {
     padding: 16px;
     display: grid;

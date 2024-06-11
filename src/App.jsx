@@ -3,23 +3,33 @@ import { fetchExtra } from './imageFetch'
 import { shuffleDeck } from './shuffleDeck'
 import { Card } from './components/Card'
 import { NavigationBar } from './components/Navigation'
+import trobber from './assets/trobber.svg'
 import './App.css'
 
 export function Game () {
+  const [state, setState] = useState('loading');
   const [pokemons, setPokemons] = useState([]);
   const [score, setScore] = useState({points: 0, best: 0});
 
   const match = useRef([]);
-  let counter = useRef(0)
 
   useEffect(() => {
+    let ignore = false;
+
     async function getExtra (extra, initial) {
       const fetchExtraPokemons = await fetchExtra(extra, initial);
-      shuffleDeck(fetchExtraPokemons)
-      setPokemons(fetchExtraPokemons);
+      if (!ignore) {
+        shuffleDeck(fetchExtraPokemons);
+        setPokemons(fetchExtraPokemons);
+        setState('ready')
+      }
     }
-    getExtra(30, pokemons.length)
-  }, [counter.current])
+    getExtra(150, pokemons.length)
+
+    return () => {
+      ignore = true;
+    };
+  }, [])
 
   function checkMatch (id) {
     if (match.current.includes(id)) {
@@ -49,14 +59,28 @@ export function Game () {
       )
   })
 
-  return (
-    <>
-      <div className='nav'>
-        <NavigationBar score={score} />
-      </div>
-      <div className='card-board'>
-        {cardsPile.slice(0, 12)}
-      </div>
-    </>
-  )
+  if (state === 'loading') {
+    return (
+      <>
+        <div className='nav'>
+            <NavigationBar score={score} />
+        </div>
+        <div className='loading-container'>
+          <img src={trobber}></img>
+          Loading...
+        </div>
+      </>
+    )
+  } else if (state === 'ready') {
+    return (
+      <>
+        <div className='nav'>
+          <NavigationBar score={score} />
+        </div>
+        <div className='card-board'>
+          {cardsPile.slice(0, 12)}
+        </div>
+      </>
+    )
+  }
 }
