@@ -6,7 +6,7 @@ import { NavigationBar } from './components/Navigation'
 import trobber from './assets/trobber.svg'
 import './App.css'
 
-export function Game () {
+export function Game ({ cardsQuantity=50, showOnPage=12 }) {
   const [state, setState] = useState('loading');
   const [pokemons, setPokemons] = useState([]);
   const [score, setScore] = useState({points: 0, best: 0});
@@ -27,7 +27,7 @@ export function Game () {
       }
     }
     // Call async function
-    getExtra(50, pokemons.length)
+    getExtra(cardsQuantity, pokemons.length)
 
     // Cleanup
     return () => {
@@ -82,7 +82,7 @@ export function Game () {
           <NavigationBar score={score} />
         </div>
         <div className='card-board'>
-          {cardsPile.slice(0, 12)}
+          {cardsPile.slice(0, showOnPage)}
         </div>
       </>
     )
