@@ -69,7 +69,7 @@ export function Game () {
         <div className='nav'>
             <NavigationBar score={score} />
         </div>
-        <div className='loading-container'>
+        <div data-testid='001' className='loading-container'>
           <img className='trobber' src={trobber}></img>
           <p>Loading</p>
         </div>

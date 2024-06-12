@@ -10,6 +10,7 @@ describe('Game component', () => {
   });
   it('start with loading state', () => {
     render(<Game />);
-    expect(screen.getByRole('textbox').textContent).toMatch(/Score: 0/i)
+    expect(screen.getByTestId('001')).toHaveTextContent('Loading')
+    expect(screen.getByTestId('001')).toBeVisible()
   })
 });

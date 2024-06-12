@@ -17,11 +17,15 @@ exports[`Game component > render snapshot correctly 1`] = `
   </div>
   <div
     class="loading-container"
+    data-testid="001"
   >
     <img
+      class="trobber"
       src="/src/assets/trobber.svg"
     />
-    Loading...
+    <p>
+      Loading
+    </p>
   </div>
 </div>
 `;
