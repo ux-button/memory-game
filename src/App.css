@@ -22,8 +22,11 @@ body {
 }
 
 .loading-container {
-    color: white;
+    color: #333;
+    min-height: 90vh;
+    max-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -60,4 +63,22 @@ body {
     .card-board {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
-  }
+}
+
+.trobber {
+    height: 48px;
+    width: 48px;
+    animation-duration: 1s;
+    animation-name: spinning;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
+
+@keyframes spinning {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

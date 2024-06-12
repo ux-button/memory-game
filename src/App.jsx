@@ -11,11 +11,13 @@ export function Game () {
   const [pokemons, setPokemons] = useState([]);
   const [score, setScore] = useState({points: 0, best: 0});
 
+  // Selected pokemons list
   const match = useRef([]);
 
   useEffect(() => {
     let ignore = false;
 
+    // Fetch images from API
     async function getExtra (extra, initial) {
       const fetchExtraPokemons = await fetchExtra(extra, initial);
       if (!ignore) {
@@ -24,16 +26,18 @@ export function Game () {
         setState('ready')
       }
     }
-    getExtra(150, pokemons.length)
+    // Call async function
+    getExtra(50, pokemons.length)
 
+    // Cleanup
     return () => {
       ignore = true;
     };
   }, [])
 
   function checkMatch (id) {
+    // Game over state
     if (match.current.includes(id)) {
-      // Game over state
       match.current = [];
       if (score.points > score.best) {
         setScore({...score, points: 0, best: score.points});
@@ -42,7 +46,7 @@ export function Game () {
       }
       shuffleDeck(pokemons);
     } else {
-      // Score state
+      // Update score
       match.current.push(id);
       setScore({...score, points: score.points + 1});
       shuffleDeck(pokemons);
@@ -66,8 +70,8 @@ export function Game () {
             <NavigationBar score={score} />
         </div>
         <div className='loading-container'>
-          <img src={trobber}></img>
-          Loading...
+          <img className='trobber' src={trobber}></img>
+          <p>Loading</p>
         </div>
       </>
     )
