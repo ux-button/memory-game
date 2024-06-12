@@ -1,13 +1,15 @@
 import { render, screen } from '@testing-library/react';
 
 import { Game } from '../src/App';
+import { expect } from 'vitest';
 
-describe('App', () => {
-  it('renders headline', () => {
-    render(<Game title="React" />);
-
-    screen.debug();
-
-    // check if App components renders headline
+describe('Game component', () => {
+  it('render snapshot correctly', () => {
+    const { container } = render(<Game />);
+    expect(container).toMatchSnapshot();
   });
+  it('start with loading state', () => {
+    render(<Game />);
+    expect(screen.getByRole('textbox').textContent).toMatch(/Score: 0/i)
+  })
 });

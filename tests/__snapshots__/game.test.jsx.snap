@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Game component > render snapshot correctly 1`] = `
+<div>
+  <div
+    class="nav"
+  >
+    <div
+      class="navigation-bar"
+      role="textbox"
+    >
+      Score: 
+      0
+       ✦ Best score: 
+      0
+    </div>
+  </div>
+  <div
+    class="loading-container"
+  >
+    <img
+      src="/src/assets/trobber.svg"
+    />
+    Loading...
+  </div>
+</div>
+`;
