@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react';
-
 import { Game } from '../src/App';
 import { expect } from 'vitest';
 
