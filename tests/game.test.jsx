@@ -7,6 +7,7 @@ describe('Game component', () => {
     const { container } = render(<Game />);
     expect(container).toMatchSnapshot();
   });
+
   it('start with loading state', () => {
     render(<Game />);
     expect(screen.getByTestId('001')).toHaveTextContent('Loading')
