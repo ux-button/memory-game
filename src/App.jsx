@@ -5,11 +5,16 @@ import { Card } from './components/Card'
 import { NavigationBar } from './components/Navigation'
 import trobber from './assets/trobber.svg'
 import './App.css'
+import { simpleData } from './CardContext'
+
+
 
 export function Game ({ cardsQuantity=50, showOnPage=12 }) {
   const [state, setState] = useState('loading');
   const [pokemons, setPokemons] = useState([]);
   const [score, setScore] = useState({points: 0, best: 0});
+
+  const caboo = 'Caboo'
 
   // Selected pokemons list
   const match = useRef([]);
@@ -59,7 +64,7 @@ export function Game ({ cardsQuantity=50, showOnPage=12 }) {
           id={pokemon.id}
           pokemonName={pokemon.name}
           imageUrl={pokemon.url}
-          handleClick={checkMatch}/>
+          handleClick={checkMatch} />
       )
   })
 
@@ -81,9 +86,9 @@ export function Game ({ cardsQuantity=50, showOnPage=12 }) {
         <div className='nav'>
           <NavigationBar score={score} />
         </div>
-        <div className='card-board'>
-          {cardsPile.slice(0, showOnPage)}
-        </div>
+          <div className='card-board'>
+            {cardsPile.slice(0, showOnPage)}
+          </div>
       </>
     )
   }
